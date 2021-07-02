@@ -34,7 +34,6 @@ export default {
     this.generateMap()
   },
   mounted () {
-    this.startWebcam()
     window.addEventListener('keyup', (e) => {
       const key = String.fromCharCode(e.keyCode)
       const found = this.cols.find(element => element.value === 'player')
@@ -50,76 +49,6 @@ export default {
     })
   },
   methods: {
-    startWebcam () {
-      const output = document.getElementById('output')
-      const right = document.getElementById('right')
-      const log = function (message, className) {
-        const row = document.createElement('div')
-        if (className) {
-          row.classList.add(className)
-        }
-        output.appendChild(row)
-      }
-
-      const getWebcams = function () {
-        return navigator.mediaDevices.enumerateDevices()
-          .then((devices) => {
-            devices.forEach((device) => {
-              log(device.kind + ': LABEL = "' + device.label +
-                '" ID = ' + device.deviceId)
-            })
-
-            return devices.filter((device) => {
-              return device.kind === 'videoinput'
-            })
-          })
-      }
-
-      const startWebcamStream = function (webcamDevice) {
-        const constraints = {
-          audio: false,
-          video: {
-            optional: [{
-              sourceId: webcamDevice.deviceId
-            }]
-          },
-          deviceId: {
-            exact: webcamDevice.deviceId
-          }
-        }
-
-        log('Starting webcam stream with device ID = ' + webcamDevice.deviceId)
-
-        const successCallback = function (stream) {
-          const video = document.createElement('video')
-          video.autoplay = true
-          setVideoStream(video, stream)
-
-          const row = document.createElement('div')
-          right.appendChild(row)
-          right.appendChild(video)
-        }
-
-        navigator.mediaDevices.getUserMedia(constraints)
-          .then(successCallback)
-      }
-
-      var setVideoStream = function (video, stream) {
-        try {
-          video.srcObject = stream
-        } catch (error) {
-          video.src = window.URL.createObjectURL(stream)
-        }
-      }
-
-      log('Start')
-      getWebcams()
-        .then((webcamDevices) => {
-          webcamDevices.forEach((webcamDevice) => {
-            startWebcamStream(webcamDevice)
-          })
-        })
-    },
     generateMap () {
       for (let i = 9; i < 141; ++i < 142) {
         this.cols.push({ y: i, value: '' })

@@ -1,13 +1,16 @@
 <template>
   <div>
-    <background />
+    <NuxtLink to="/newSprint">Ajouter un sprint</NuxtLink>
+    <v-row>
+      <old-sprint></old-sprint>
+    </v-row>
   </div>
 </template>
 
 <script>
 
-import Background from '~/pages/background'
+import OldSprint from "~/oldSprint";
 export default {
-  components: { Background }
+  components: { OldSprint }
 }
 </script>
