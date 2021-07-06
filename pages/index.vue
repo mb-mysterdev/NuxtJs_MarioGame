@@ -9,8 +9,8 @@
 
 <script>
 
-import OldSprint from "~/oldSprint";
+import oldSprint from "~/pages/oldSprint";
 export default {
-  components: { OldSprint }
+  components: { oldSprint }
 }
 </script>

@@ -10,7 +10,3 @@ export default {
 name: "oldSprint"
 }
 </script>
-
-<style scoped>
-
-</style>
