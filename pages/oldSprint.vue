@@ -6,7 +6,12 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-name: "oldSprint"
+name: "oldSprint",
+  mounted () {
+  console.log(axios.get(''))
+  }
 }
 </script>

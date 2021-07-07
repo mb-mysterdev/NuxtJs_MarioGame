@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableSprint extends Migration
+class CreateSprint extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTableSprint extends Migration
      */
     public function up()
     {
-        Schema::create('table_sprint', function (Blueprint $table) {
+        Schema::create('sprints', function (Blueprint $table) {
             $table->id('sprint_id');
             $table->string('sprint_name');
+            $table->date('sprint_date');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTableSprint extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_sprint');
+        Schema::dropIfExists('sprints');
     }
 }

@@ -2,16 +2,17 @@
 
 return [
     'default' => env('DB_CONNECTION', 'mysql'),
+    'migrations' => 'migrations',
 
     'connections' => [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => app('App\Services\Database\DatabaseService')->getHost(),
-            'port' => app('App\Services\Database\DatabaseService')->getPort(),
-            'database' => app('App\Services\Database\DatabaseService')->getDatabase(),
-            'username' => app('App\Services\Database\DatabaseService')->getUser(),
-            'password' => app('App\Services\Database\DatabaseService')->getPassword(),
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => 'retro_game',
+            'username' => 'root',
+            'password' => '',
             'unix_socket' => '',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',

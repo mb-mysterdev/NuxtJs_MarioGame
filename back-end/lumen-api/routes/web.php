@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'sprint'], function () use ($router) {
+    $router->get('', ['uses' => 'SprintController@getAll']);
+});
